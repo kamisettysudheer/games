@@ -1,28 +1,19 @@
-// find a path in mine field...
-/*
-create a path
-create only one start and one end
-other than the path in a land , all are mines
-if 
-*/
-
-// make a boxes as dynamic   🟦 ⬜ 🟥
-
 const blueBox = "🟦";
 
-function getBoxes(noOfBoxes, row) {
-  if (noOfBoxes < 0) {
-    return 0;
+function getBoxes(noOfRows, noOfColoumns, rowPos, coloumnPos) {
+  let boxes = "";
+
+  for (let row = 0; row < noOfRows; row++) {
+    for (let coloumn = 0; coloumn < noOfColoumns; coloumn++) {
+      if (row === rowPos && coloumn === coloumnPos) {
+        boxes = boxes + "🧑‍💼";
+      } else {
+        boxes = boxes + blueBox;
+      }
+    }
+
+    boxes = boxes + "\n";
   }
 
-  if (row.length === 10) {
-    console.log(row);
-    row = "";
-  }
-
-  row = row + blueBox;
-
-  return getBoxes(noOfBoxes - 1, row);
+  return boxes;
 }
-
-getBoxes(25, "");
